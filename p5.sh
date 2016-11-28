@@ -4,18 +4,15 @@
 passengerName=$(zenity --forms --title="Create Reservation" --text="Personal Info" --add-entry="Enter Your Name")
 if grep -q "$passengerName" reservations.txt; then
     grep -v "$passengerName" reservations.txt > reservations; mv reservations reservations.txt
-    zenity --info --title "ALERT" --text "Your previous reservation in the system has been canceled. Please begin again."
+    zenity --info --title "ALERT" --text "Hello, $passengerName. Your previous reservation in the system has been canceled. Please begin again."
     passengerName=$(zenity --forms --title="New Reservation" --text="Personal Info" --add-entry="Enter Your Name")
-    continue
-else
-    continue
 fi
 departCity=$(zenity  --list  --text "Choose Your Departure City" --radiolist  --column "Pick" --column "City" TRUE "Portland, OR" FALSE "Seattle, WA" FALSE "Los Angeles, CA" FALSE "Austin, TX" FALSE "Bozeman, MT" FALSE "Berlin, DE" FALSE "Sydney, AU" )
 #echo $departCity #confirming departure city for testing
 destinationCity=$(zenity  --list  --text "Choose Your destination City" --radiolist  --column "Pick" --column "City" TRUE "Portland, OR" FALSE "Seattle, WA" FALSE "Los Angeles, CA" FALSE "Austin, TX" FALSE "Bozeman, MT" FALSE "Berlin, DE" FALSE "Sydney, AU" FALSE Neverland )
 #echo $destinationCity #confirming destination city for testing
 
-while [[ $destinationCity -eq "Neverland" ]]; do
+while [[ $destinationCity = "Neverland" ]]; do
 #if "destinationCity" equals "Neverland" then pop up warning dialog
     zenity --question --text "Are you sure you want to go to Neverland? This action cannot be reversed." --ok-label "Absolutely!" --cancel-label="No Way!"
         if [ $? = 0 ] ; then
@@ -38,7 +35,7 @@ howmanyBags=$(zenity --entry --text "How many bags are you taking along?")
 
 echo Your Reservation Info:
 echo " "
-echo $passengerName
+echo Name: $passengerName
 echo Departure City: $departCity
 echo Departure Date: $departDate
 echo destination City: $destinationCity
