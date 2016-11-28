@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-echo "Calendar display"
-echo "Enter a month (1 to 12)"
-read month
-echo "Enter a year (4 digits)"
-read year
-
-cal $month $year
