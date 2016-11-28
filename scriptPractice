@@ -1,0 +1,21 @@
+#!/bin/bash
+#script with GUI to play high-low against the computer (using Zenity)
+
+random="$(( (RANDOM % 10) + 1 ))"
+guess="0"
+
+guess=$(zenity --entry --text "Guess a number between 1 - 10")
+while [[ $guess -ne $random ]]; do
+
+    zenity --question --text "Wrong. Want to continue?" # Giving the option to user
+
+     [ $? -eq 0 ] || exit 1  # Checking if user wants to proceed
+
+    if [[ $guess -lt $random ]]; then
+        guess=$(zenity --entry --text "Your number was too low, guess again")
+    elif [[ $guess -gt $random ]]; then
+        guess=$(zenity --entry --text "Your number was too high, guess again")
+    fi
+done
+
+zenity --info --title "Information" --text "Correct!"

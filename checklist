@@ -1,0 +1,11 @@
+#Create a dialog box to ask for the traveler's name
+#Display a list of cities from which the traveler may depart (include 7 or more cities)
+#Display the same list of cities for when the traveler may be heading
+#Display a calendar dialog for when the traveler is leaving
+#Display a calendar dialog for when the traveler is returning
+#Ask the user how many bags they will be checking
+#Display a summary of this information on the terminal
+#Search a file named "reservations.txt" for the users name. If they already have a reservation, remove that reservation from the reservations.txt file
+#Add the user's reservation to the reservations.txt file. You should store this as a single line in the following format:
+#
+# name|departure city|destination city|departure date|arrival date|number of bags
