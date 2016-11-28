@@ -1,12 +1,13 @@
-YES #Create a dialog box to ask for the traveler's name
-YES #Display a list of cities from which the traveler may depart (include 7 or more cities)
-YES #Display the same list of cities for when the traveler may be heading
-YES #Display a calendar dialog for when the traveler is leaving
-YES #Display a calendar dialog for when the traveler is returning
-YES #Ask the user how many bags they will be checking
-YES #Display a summary of this information on the terminal
-YES #Search a file named "reservations.txt" for the users name.
-YES #If they already have a reservation, remove that reservation from the reservations.txt file
-YES #Add the user's reservation to the reservations.txt file.
-YES #You should store this as a single line in the following format:
+Corinna #Create a dialog box to ask for the traveler's name
+Corinna #Display a list of cities from which the traveler may depart (include 7 or more cities)
+Corinna #Display the same list of cities for when the traveler may be heading
+Corinna #Display a calendar dialog for when the traveler is leaving
+Corinna #Display a calendar dialog for when the traveler is returning
+Corinna #Ask the user how many bags they will be checking
+
+Jessi #Display a summary of this information on the terminal
+Jessi #Search a file named "reservations.txt" for the users name.
+Jessi #If they already have a reservation, remove that reservation from the reservations.txt file
+Jessi #Add the user's reservation to the reservations.txt file.
+Jessi #You should store this as a single line in the following format:
      ###name|departure city|destination city|departure date|arrival date|number of bags
