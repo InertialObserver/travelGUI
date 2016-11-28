@@ -4,8 +4,7 @@
 #If so, then the line with the that passenger's reservation is removed from the file.
 #The passenger gets a dialog box informing her that her last reservation has been removed
 #Then the passenger is again prompted for her name, which will be added to the file as new later in the program
-
-#This loop removes the name by moving the contents of reservations.txt into a new file called reservations
+#It removes the name by moving the contents of reservations.txt into a new file called reservations
 #and then the contents of reservations minus the line with the passenger's name is moved back to reservations.txt
 
 #If the passenger's name is not found in reservations.txt, then nothing else happens in this loop
