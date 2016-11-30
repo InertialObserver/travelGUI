@@ -1,7 +1,7 @@
 #{Bash Script : Travel Reservation GUI using Zenity}
 This is a bash script that prompts the user via graphic pop-up boxes to enter their travel reservation information. The GUI is coded with Zenity.
 ## Side Effects:
-  -Only runs on local systems with Zenity installed
+  -Only runs on local systems with Zenity installed  
   -Will not run on systems accessed via SSH
 ## KNOWN BUGS/ERRORS:
   -Allows behavior that should not be permitted, such as selecting a return date that is before the selected departure date.  
@@ -11,8 +11,8 @@ This is a bash script that prompts the user via graphic pop-up boxes to enter th
   -If using a Windows computer, you need to run this program either with Cygwin or a Linux virtual box.  
   -Clone git repo
 ## Usage
-  -Navigate to the travelGUI directory via your terminal `cd travelGUI`
-  -Type `bash P5`
+  -Navigate to the travelGUI directory via your terminal `cd travelGUI`  
+  -Type `bash P5`   
   -Or you can make it executable by typing `chmod +x P5` and then typing 'P5' to run the program in the terminal thereafter (on Linux)
 ## Contributing
 1. Fork it!
