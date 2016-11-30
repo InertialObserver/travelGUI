@@ -11,3 +11,8 @@ Jessi #If they already have a reservation, remove that reservation from the rese
 Jessi #Add the user's reservation to the reservations.txt file.
 Jessi #You should store this as a single line in the following format:
      ###name|departure city|destination city|departure date|arrival date|number of bags
+
+Corinna & Jessi #Error checking
+Corinna & Jessi #Testing
+Corinna & Jessi #Bug Fixing
+Corinna & Jessi #Commenting
