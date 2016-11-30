@@ -1,5 +1,12 @@
 #!/bin/bash
 
+#text box prompting user to enter name of traveler
+passengerName=$(zenity --entry --title="New Reservation" --text="Enter name of traveler:")
+#selection box with list of possible departure cities
+departCity=$(zenity  --list  --text "What is your departure city?" --radiolist  --column "Pick" --column "City" TRUE "Portland,Oregon" FALSE "Seattle, Washington" FALSE "Boise, Idaho" FALSE "Bend, Oregon" FALSE "Santa Fe, New Mexico" FALSE "Kansas City, Kansas" FALSE "Glacier Park, Montana" )
+#selection box with list of possible destination cities
+destinationCity=$(zenity  --list  --text "Where do you wish to travel?" --radiolist  --column "Pick" --column "City" TRUE "Florence, Italy" FALSE Neverland FALSE "Hibbing, Minnesota" FALSE "Bourbon, Missouri" FALSE "Phoenix, Arizona" FALSE "New Orleans, Louisiana" FALSE "Bedrule, Scotland" FALSE "Markow, Poland" FALSE "Dubrovnik, Croatia")
+
 #This loop checks to see if the passenger's name is already in the "database" (reservations.txt file)
 #If so, then the line with the that passenger's reservation is removed from the file.
 #The passenger gets a dialog box informing her that her last reservation has been removed
@@ -13,6 +20,9 @@ if grep -q "$passengerName" reservations.txt; then
     zenity --info --title "ALERT" --text "Hello, $passengerName. Your previous reservation in the system has been canceled. Please begin again."
     passengerName=$(zenity --forms --title="New Reservation" --text="Personal Info" --add-entry="Enter Your Name")
 fi
+
+#pop up calendar to select departure date
+departDate=$(zenity --calendar --title="Departure Date" --text="When do you wish to depart?")
 
 #This loop runs when the destination city is "Neverland"
 # If the user confirms the destination when the warning dialog pops up
@@ -29,27 +39,35 @@ while [[ $destinationCity = "Neverland" ]]; do
 #if "destinationCity" equals "Neverland" then pop up warning dialog and continue from there
     zenity --question --text "Are you sure you want to go to Neverland? This action cannot be reversed." --ok-label "Absolutely!" --cancel-label="No Way!"
         if [ $? = 0 ] ; then  #If the user hits "Absolutely"
-            departDate=$(zenity --calendar --text "When to leave?" --title "Initial Flight")
             returnDate="When you're ready to grow up"
             break;
         elif [ $? = 1 ] ; then  #If the user hits "No Way"
-            destinationCity=$(zenity  --list  --text "Choose Your destination City" --radiolist  --column "Pick" --column "City" TRUE "Portland, OR" FALSE "Seattle, WA" FALSE "Los Angeles, CA" FALSE "Austin, TX" FALSE "Bozeman, MT" FALSE "Berlin, DE" FALSE "Sydney, AU" )
-            departDate=$(zenity --calendar --text "When to leave?" --title "Initial Flight")
-            returnDate=$(zenity --calendar --text "When to return?" --title "Return Flight")
+            destinationCity=$(zenity  --list  --text "Where do you wish to travel?" --radiolist  --column "Pick" --column "City" TRUE "Florence, Italy" FALSE "Hibbing, Minnesota" FALSE "Bourbon, Missouri" FALSE "Phoenix, Arizona" FALSE "New Orleans, Louisiana" FALSE "Bedrule, Scotland" FALSE "Markow, Poland" FALSE "Dubrovnik, Croatia")
+            returnDate=$(zenity --calendar --title="Return Date" --text="When do you wish to return?")
             break;
         fi
 done
 
-# Print the reservation info to the terminal
+#If the destination city is any other than "Neverland", prompt for return date
+while [[ $destinationCity != "Neverland" ]]; do
+    #pop up calendar to select return date
+    returnDate=$(zenity --calendar --title="Return Date" --text="When do you wish to return?")
+    break;
+done
 
+#text box prompting user to enter how many bags they are bringing
+howmanybags=$(zenity --entry --title="Baggage Count" --text="How many bags are you bringing:")
+
+# Print the reservation info to the terminal
 echo Your Reservation Info:
-echo " "
+echo " " #blank line for style
 echo Name: $passengerName
 echo Departure City: $departCity
 echo Departure Date: $departDate
 echo destination City: $destinationCity
 echo Number of Bags: $howmanyBags
 echo Return Date: $returnDate
+echo " " #blank line for style
 
 # Print the reservation info to the reservations.txt file
 echo "$passengerName|$departCity|$destinationCity|$departDate|$returnDate|$howmanyBags" >> reservations.txt
